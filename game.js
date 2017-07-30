@@ -7,6 +7,8 @@
   5. if mouse input includes smiley, then give 'you got it' feedback
   6. reset (delete stars)
  */
+var instructions = document.getElementById('instructions');
+var instructionsHidden = false;
 var gameboard = document.getElementById('gameboard');
 var bad = {o:document.getElementById('badface')};
 var good = {o:document.getElementById('goodface')};
@@ -15,6 +17,15 @@ var listening = false; //
 var gameStartTime = Number(new Date());
 var lastRoundTime = 0;
 var thresholdTimes = [2*60*1000, 5*60*1000, 10*60*1000];
+var images = [];
+var imageIndex = -1;
+var imageSourceUrl = ''
+
+if (/antianxiety/.test(document.location.hostname)) {
+  imageSourceUrl = 'https://s3.amazonaws.com/antianxiety/backgrounds.json'
+}
+
+
 var w = 75; //px of monster
 
 var dist = function(a,b) {return Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2); }
@@ -45,7 +56,14 @@ function makeStar(pos) {
   gameboard.appendChild(star);
 }
 
-function resetTouches(evt) { touchWins = []; }
+function resetTouches(evt) {
+  touchWins = [];
+  if (!instructionsHidden) {
+    instructionsHidden = true;
+    instructions.style.display = 'none';
+  }
+}
+
 function evaluateTouches(evt) {
   if (listening) {
     var avg = (touchWins.reduce(function(acc,val) {return acc+val},0)
@@ -74,6 +92,13 @@ function winRound() {
     // 3. fadeout markers, change background
     bad.o.className = good.o.className = 'face';
     bad.o.className = good.o.className = 'face fadeInOut';
+    if (images.length) {
+      ++imageIndex;
+      if (imageIndex == images.length) {
+        imageIndex = 0;
+      }
+      gameboard.style.backgroundImage = 'url(' + images[imageIndex].url + ')'
+    }
 
     // 4.
     startRound();
@@ -114,3 +139,11 @@ gameboard.addEventListener("touchend", evaluateTouches, true);
 gameboard.addEventListener("mouseup", evaluateTouches, true);
 
 startRound();
+
+fetch('https://s3.amazonaws.com/antianxiety/backgrounds.json').then(function(res) {
+  res.json().then(function(data){
+    images = data.images;
+    imageIndex = 0;
+    gameboard.style.backgroundImage = 'url(' + images[imageIndex].url + ')'
+  })
+})
