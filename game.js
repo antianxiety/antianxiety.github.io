@@ -19,7 +19,7 @@ var lastRoundTime = 0;
 var thresholdTimes = [2*60*1000, 5*60*1000, 10*60*1000];
 var images = [];
 var imageIndex = -1;
-var imageSourceUrl = ''
+var imageSourceUrl = 'backgrounds.json'
 
 if (/antianxiety/.test(document.location.hostname)) {
   imageSourceUrl = 'https://s3.amazonaws.com/antianxiety/backgrounds.json'
@@ -140,7 +140,7 @@ gameboard.addEventListener("mouseup", evaluateTouches, true);
 
 startRound();
 
-fetch('https://s3.amazonaws.com/antianxiety/backgrounds.json').then(function(res) {
+fetch(imageSourceUrl).then(function(res) {
   res.json().then(function(data){
     images = data.images;
     imageIndex = 0;
