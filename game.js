@@ -165,7 +165,7 @@ document.getElementById('see-credits').addEventListener('click', function(evt) {
   var creditHtml = images.map(function(img) {
     return ('<li><a href="'
             + (img.credit_url||'#')
-            +'"><img src="' +img.url+ '" height="40"/>'
+            +'"><img src="' + getImageUrl(img) + '" height="40"/>'
             + (img.credit || img.url.replace(/.*\//,''))
             + '</a></li>')
   }).join('');
