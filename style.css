@@ -120,3 +120,11 @@ body {
   animation-duration: 0.7s;
   animation-direction: alternate;
 }
+
+ul#credits {
+  list-style: none;
+}
+
+ul#credits img {
+  padding: 8px 10px 0 10px;
+}

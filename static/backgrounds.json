@@ -1,0 +1,48 @@
+{
+  "images": [
+    {"url": "./images/backgrounds/pexels-photo-105896.jpeg",
+     "credit": "",
+     "credit_url": "https://www.pexels.com/photo/nature-sky-field-flowers-105896/"
+    },
+    {"url": "./images/backgrounds/alps-tree-snow-nature-landscape-flowers-grass.jpg",
+     "credit": "",
+     "credit_url": "https://www.pexels.com/photo/bloom-blossom-field-flora-36032/"
+    },
+    {"url": "./images/backgrounds/field-of-poppies-364162_1920.jpg",
+     "credit": "",
+     "credit_url": "https://pixabay.com/en/field-of-poppies-poppy-poppies-364162/"
+    },
+    {"url": "./images/backgrounds/mountains-1597335_1920.jpg",
+     "credit": "",
+     "credit_url": "https://pixabay.com/en/mountains-peaks-mountain-top-1597335/"
+    },
+    {"url": "./images/backgrounds/forest-2165911_1920.jpg",
+     "credit": "",
+     "credit_url": "https://pixabay.com/en/forest-mushrooms-nature-autumn-2165911/"
+    },
+    {"url": "./images/backgrounds/woods-1072819_1920.jpg",
+     "credit": "",
+     "credit_url": "https://pixabay.com/en/woods-forest-nature-landscape-tree-1072819/"
+    },
+    {"url": "./images/backgrounds/grasshopper-1081919_1920.jpg",
+     "credit": "",
+     "credit_url": "https://pixabay.com/en/grasshopper-macro-insect-animal-1081919/"
+    },
+    {"url": "./images/backgrounds/sunset-2205553_1920.jpg",
+     "credit": "",
+     "credit_url": "https://pixabay.com/en/sunset-beach-sea-sun-abendstimmung-2205553/"
+    },
+    {"url": "./images/backgrounds/sunset-192978_1280.jpg",
+     "credit": "",
+     "credit_url": "https://pixabay.com/en/sunset-clouds-lake-rest-sunny-192978/"
+    },
+    {"url": "./images/backgrounds/flying-2428231_1920.jpg",
+     "credit": "",
+     "credit_url": "https://pixabay.com/en/flying-forest-path-wood-trees-2428231/"
+    },
+    {"url": "./images/backgrounds/mood-1335737_1920.jpg ",
+     "credit": "",
+     "credit_url": "https://pixabay.com/en/mood-nature-river-water-flow-1335737/"
+    }
+  ]
+}

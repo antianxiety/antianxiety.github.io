@@ -22,7 +22,7 @@ var imageIndex = -1;
 var imageSourceUrl = 'backgrounds.json'
 
 if (/antianxiety/.test(document.location.hostname)) {
-  imageSourceUrl = 'https://s3.amazonaws.com/antianxiety/backgrounds.json'
+  imageSourceUrl = 'static/backgrounds.json'
 }
 
 
@@ -97,7 +97,11 @@ function winRound() {
       if (imageIndex == images.length) {
         imageIndex = 0;
       }
-      gameboard.style.backgroundImage = 'url(' + images[imageIndex].url + ')'
+      var imageUrl = images[imageIndex].url
+      if (/^.\//.test(imageUrl)) {
+        imageUrl = imageSourceUrl.replace('backgrounds.json', '') + imageUrl.slice(2)
+      }
+      gameboard.style.backgroundImage = 'url(' + imageUrl + ')'
     }
 
     // 4.
@@ -147,3 +151,14 @@ fetch(imageSourceUrl).then(function(res) {
     gameboard.style.backgroundImage = 'url(' + images[imageIndex].url + ')'
   })
 })
+
+document.getElementById('see-credits').addEventListener('click', function(evt) {
+  var creditHtml = images.map(function(img) {
+    return ('<li><a href="'
+            + (img.credit_url||'#')
+            +'"><img src="' +img.url+ '" height="40"/>'
+            + (img.credit || img.url.replace(/.*\//,''))
+            + '</a></li>')
+  }).join('');
+  document.getElementById('credits').innerHTML = creditHtml;
+}, true);
