@@ -22,6 +22,7 @@ var imageIndex = -1;
 var imageSourceUrl = 'backgrounds.json'
 
 if (/antianxiety/.test(document.location.hostname)) {
+  //way to see if it's 'production' at antianxiety.github.io
   imageSourceUrl = 'static/backgrounds.json'
 }
 
@@ -74,6 +75,14 @@ function evaluateTouches(evt) {
   }
 }
 
+function getImageUrl(img) {
+  var imageUrl = img.url
+  if (/^.\//.test(imageUrl)) {
+    imageUrl = imageSourceUrl.replace('backgrounds.json', '') + imageUrl.slice(2)
+  }
+  return imageUrl
+}
+
 function winRound() {
   listening = false;
   var newRound = Number(new Date()) - gameStartTime;
@@ -101,7 +110,7 @@ function winRound() {
       if (/^.\//.test(imageUrl)) {
         imageUrl = imageSourceUrl.replace('backgrounds.json', '') + imageUrl.slice(2)
       }
-      gameboard.style.backgroundImage = 'url(' + imageUrl + ')'
+      gameboard.style.backgroundImage = 'url(' + getImageUrl(images[imageIndex]) + ')'
     }
 
     // 4.
@@ -148,7 +157,7 @@ fetch(imageSourceUrl).then(function(res) {
   res.json().then(function(data){
     images = data.images;
     imageIndex = 0;
-    gameboard.style.backgroundImage = 'url(' + images[imageIndex].url + ')'
+    gameboard.style.backgroundImage = 'url(' + getImageUrl(images[imageIndex]) + ')'
   })
 })
 
